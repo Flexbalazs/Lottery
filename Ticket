@@ -1,0 +1,68 @@
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.LinkedHashSet;
+
+public class Ticket {
+
+    private String name;
+    private Set<Integer> guesses = new LinkedHashSet<>();
+    private int correctGuessesCount;
+
+    public Szelveny(String name, Set<Integer> guesses) {
+        if (nev != null && name.length() > 0) {
+            this.name = name;
+
+        } else {
+            this.name = "Player";
+
+        }
+        boolean correct = true;
+        for (Integer guess : guesses) {
+            if (guess < 1 || guess > 30) {
+                correct = false;
+            }
+        }
+            
+        if (guesses.size() == 3 && correct) {
+            this.guesses = guesses;   
+        }
+        
+        
+    }
+
+    
+    public boolean newGuess(int guess) {
+        if (guess < 1 || guess > 30 || guesses.contains(guess) || guesses.size() >= 3) {
+            return false;
+        }
+        guesses.add(guess);
+        return true;
+    }
+
+    
+    public String getName() {
+        return this.name;
+    }
+
+    
+    public Set<Integer> getGuesses() {
+        return Collections.unmodifiableSet(guesses);
+    }
+
+    public boolean enoughNumber() {
+        return guesses.size() >= 3;
+    }
+
+    public int getCorrectGuessesCount() {
+        return correctGuessesCount;
+    }
+
+    public void evaluate(Set<Integer> winningNumbers) {
+        Set<Integer> tmp = new HashSet<>(guesses);
+        tmp.retainAll(winningNumbers);
+        talalatokSzama = tmp.size();
+    }
+
+}
