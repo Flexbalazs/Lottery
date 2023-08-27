@@ -62,7 +62,7 @@ public class Ticket {
     public void evaluate(Set<Integer> winningNumbers) {
         Set<Integer> tmp = new HashSet<>(guesses);
         tmp.retainAll(winningNumbers);
-        talalatokSzama = tmp.size();
+        correctGuessesCount = tmp.size();
     }
 
 }
