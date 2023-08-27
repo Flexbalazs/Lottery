@@ -1,0 +1,15 @@
+import java.util.Comparator;
+
+/**
+ *
+ * @author Flex
+ */
+
+public class CorrectGuessComparator implements Comparator<Ticket>{
+     @Override
+    public int compare(Ticket o1, Ticket o2) {
+        return new Integer (o2.getCorrectGuessesCount()).compareTo(o1.getCorrectGuessesCount());
+        
+    }
+    
+}
